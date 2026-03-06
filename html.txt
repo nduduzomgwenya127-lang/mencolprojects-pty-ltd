@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mencol Projects (Pty) Ltd - Construction & Engineering Excellence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #c9302c;
+            --secondary-color: #1a1a1a;
+            --accent-color: #f4f4f4;
+            --text-dark: #333;
+            --text-light: #666;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: var(--white);
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 1rem auto;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--accent-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h4 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .service-card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            color: var(--text-light);
+        }
+
+        .service-card ul li {
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--accent-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+        .project-card h4 {
+            color: var(--primary-color);
+            margin-top: 1rem;
+        }
+
+        /* Vision & Mission */
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .vm-card {
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: var(--white);
+            border-radius: 10px;
+        }
+
+        .vm-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .vm-card ul {
+            list-style: none;
+        }
+
+        .vm-card ul li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .vm-card ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--white);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--accent-color);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            color: var(--text-light);
+            margin: 0.5rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .bbbee-level {
+            display: inline-block;
+            background: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content,
+            .vm-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>MENCOL</h1>
+                <span>Projects (Pty) Ltd<br>Reg: 2015089301107</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Welcome to Mencol Projects</h1>
+        <p>100% Black-Owned Construction & Engineering Powerhouse</p>
+        <div class="hero-badges">
+            <span class="badge">CIDB PE GB Level 4</span>
+            <span class="badge">CIDB ME Level 4</span>
+            <span class="badge">Level 1 BBBEE</span>
+            <span class="badge">Est. 2015</span>
+        </div>
+        <a href="#contact" class="cta-button">Get In Touch</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Us</h2>
+        <p class="section-subtitle">Building Excellence Since 2015</p>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <h3>We Don't Just Construct Buildings - We Construct Opportunities</h3>
+                <p>We are a 100% black-owned Level 1 BBBEE contributor with a decade of experience in construction, engineering, and project management.</p>
+                <p>Our foundation is built on empowerment, skills transfer, and SME development. We actively employ and mentor local talent, promote youth in construction, and support community-driven initiatives.</p>
+                <p>From government departments to private enterprises, our clients trust us because we deliver on time, within budget, and with zero tolerance for compromise on safety or quality.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <h4>10+</h4>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-card">
+                    <h4>100%</h4>
+                    <p>Black Owned</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Level 1</h4>
+                    <p>BBBEE Contributor</p>
+                </div>
+                <div class="stat-card">
+                    <h4>CIDB</h4>
+                    <p>GB & ME Level 4</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Comprehensive Solutions for Every Project</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🏗️ Construction & Engineering</h3>
+                <ul>
+                    <li>Construction Works</li>
+                    <li>Engineering Support</li>
+                    <li>Project Management</li>
+                    <li>Metal Works & Fabrications</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <h3>⚡ Energy Solutions</h3>
+                <ul>
+                    <li>Solar PV Installation</li>
+                    <li>Rooftop Solar Systems</li>
+                    <li>Electrical Installations</li>
+                    <li>Renewable Energy Projects</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <h3>🚂 Infrastructure</h3>
+                <ul>
+                    <li>Road Rehabilitation</li>
+                    <li>Rail Maintenance</li>
+                    <li>Transnet Rail Services</li>
+                    <li>Stormwater Upgrades</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <h3>️ Equipment & Supplies</h3>
+                <ul>
+                    <li>Plant Hire (Yellow Machinery)</li>
+                    <li>Engineering Consumables</li>
+                    <li>Engineering Parts</li>
+                    <li>Motor Parts & Machinery</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <h3>🦺 Safety & Branding</h3>
+                <ul>
+                    <li>PPE Supply</li>
+                    <li>Consumables</li>
+                    <li>Branding Solutions</li>
+                    <li>Tools & Equipment</li>
+                </ul>
+            </div>
+            
+            <div class="service-card">
+                <h3>📦 Specialized Services</h3>
+                <ul>
+                    <li>Ballast Stones</li>
+                    <li>Sleepers</li>
+                    <li>Engineering Parts</li>
+                    <li>Machinery Equipment</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="section-title">Our Projects</h2>
+        <p class="section-subtitle">Delivering Excellence Across Sectors</p>
+        
+        <div class="projects-grid">
+            <div class="project-card">
+                <h4>🛣️ Road Rehabilitation</h4>
+                <p>Infrastructure development and maintenance</p>
+            </div>
+            <div class="project-card">
+                <h4>☀️ Solar PV Installation</h4>
+                <p>Renewable energy solutions</p>
+            </div>
+            <div class="project-card">
+                <h4>🚃 Rail Maintenance</h4>
+                <p>Transnet rail services</p>
+            </div>
+            <div class="project-card">
+                <h4>🏗️ Stormwater Upgrades</h4>
+                <p>Civil engineering projects</p>
+            </div>
+            <div class="project-card">
+                <h4>🏢 Rooftop Solar</h4>
+                <p>Commercial solar systems</p>
+            </div>
+            <div class="project-card">
+                <h4>🔧 Industrial Supply</h4>
+                <p>Equipment and materials</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section id="vision">
+        <h2 class="section-title">Vision & Mission</h2>
+        <p class="section-subtitle">Our Commitment to Excellence</p>
+        
+        <div class="vm-grid">
+            <div class="vm-card">
+                <h3>👁️ Our Vision</h3>
+                <p>To be the leading black-owned service provider in South Africa, delivering world-class solutions in construction, engineering, agriculture, logistics, and renewable energy - with excellence, integrity, and measurable social impact.</p>
+            </div>
+            
+            <div class="vm-card">
+                <h3>🎯 Our Mission</h3>
+                <ul>
+                    <li>Providing superior project outcomes through efficient planning, skilled execution, and proactive risk management</li>
+                    <li>Upholding customer compliance, team empowerment, and innovation in every task</li>
+                    <li>Fighting unemployment and poverty by nurturing local talent and supporting SMEs</li>
+                    <li>Ensuring zero harm through rigorous SHEQ standards</li>
+                    <li>Transferring skills and creating sustainable community values</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Let's Build Together</p>
+        
+        <div class="contact-content">
+            <div class="contact-card">
+                <h4>📞 Phone</h4>
+                <p>072 026 038</p>
+            </div>
+            
+            <div class="contact-card">
+                <h4>📧 Email</h4>
+                <p>coltranemgwenya@gmail.com</p>
+            </div>
+            
+            <div class="contact-card">
+                <h4>🌐 Website</h4>
+                <p>www.mencolprojects.co.za</p>
+            </div>
+            
+            <div class="contact-card">
+                <h4>📍 Address</h4>
+                <p>191 Uys Str<br>Rynfield, Benoni<br>GP 1501</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Mencol Projects (Pty) Ltd</strong></p>
+        <p>Registration No: 2015089301107</p>
+        <p>CIDB PE GB Level 4 | CIDB ME Level 4</p>
+        <div class="bbbee-level">Level 1 BBBEE Contributor - 100% Black Owned</div>
+        <p style="margin-top: 2rem;">&copy; 2024 Mencol Projects. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '70px';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'white';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '2rem';
+            navLinks.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+        });
+
+        // Scroll animation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY > sectionTop) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
